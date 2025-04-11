@@ -10,6 +10,7 @@ This can be used to test NAND backups from other consoles.
 - This was tested injecting an Erista PRODINFO into another Erista. This may or may not work for Mariko / Lite / OLED, I don't know!
 - There is little to no permanent brick risk if all steps are followed properly, still be careful and take backups!!
 - This tool is not made to evade bans. Nintendo telemetry may still detect this and ban both consoles!
+- As always, I can't promise any results from using this. Don't sue me if your overclocked OLED-swapped $1000 Switch Lite doesn't like an Erista PRODINFO :)
 
 # Usage
 0. Take a complete SysMMC backup and save it on your PC or somewhere safe!
