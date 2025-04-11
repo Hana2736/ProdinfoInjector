@@ -1,5 +1,5 @@
 # ProdinfoInjector
-Allows you to create a custom Atmosphère build that spoofs another PRODINFO.
+Allows you to create a custom Atmosphère build that spoofs another PRODINFO.  
 This can be used to test NAND backups from other consoles.
 
 # Notes and warnings
