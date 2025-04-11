@@ -1,24 +1,28 @@
 # ProdinfoInjector
-Inject PRODINFO files into a custom atmosphere build.
+Allows you to compile Atmosphère while injecting a PRODINFO of another console.  
+This can be used to test NAND backups from other consoles.
 
-Install devkitpro and all atmosphere dependencies, as well as python and make
+# Notes and warnings
+- This build of Atmosphère will spoof the PRODINFO on both SysMMC and EmuMMC, regardless of any PRODINFO blanking settings in `exosphere.ini` 
+- You **must** use TegraExplorer to wipe the MMC, the Switch OS will not work after you change PRODINFOs unless you wipe!
+- Make sure you have a MMC backup! This doens't physically overwrite your PRODINFO, but you want to keep your tickets and savedata safe!
+- You can **not** go between your stock PRODINFO and other PRODINFOs without a TegraExplorer wipe!
+- This was tested injecting an Erista PRODINFO into another Erista. This may or may not work for Mariko / Lite / OLED, I don't know!
+- There is little to no permanent brick risk if all steps are followed properly, still be careful and take backups!!
+- This tool is not made to evade bans. Nintendo telemetry may still detect this and ban both consoles!
 
-echo "########################################################################"
-echo "THIS ATMOSPHERE BUILD WILL SPOOF YOUR PRODINFO ON SysMMC AND EmuMMC,"
-echo "REGARDLESS OF EXOSPHERE.INI PRODINFO BLANKING SETTING"
-echo ""
-echo "YOU *MUST* USE TEGRAEXPLORER TO FULLY WIPE SAVEDATA BEFORE BOOTING"
-echo "TO GO BACK TO YOUR ORIGINAL PRODINFO, JUST INSTALL NORMAL ATMOSPHERE"
-echo "MAKE SURE TO BACKUP THE MMC YOU ARE USING THIS ON"
-echo "YOU CANNOT GO BACK/FORTH BETWEEN PRODINFOS WITHOUT A FULL WIPE"
-echo ""
-echo "I RECOMMEND WIPING EmuMMC AND ONLY USING THIS BUILD ON EmuMMC"
-echo "THAT WAY YOU DO NOT NEED TO WIPE YOUR SysMMC"
-echo ""
-echo "THIS BUILD DOES NOT PHYSICALLY OVERWRITE YOUR PRODINFO ON DISK"
-echo "STILL, SYSTEM SERVICES BREAK IF PRODINFO IS CHANGED WITHOUT A WIPE"
-echo ""
-echo "I DO NOT KNOW HOW THIS BEHAVES ON MARIKO/OLED"
-echo "USE CAUTION MIXING PRODINFO MODELS"
-echo "YOU MAY STILL BE BANNED, THERE IS NO INSURANCE OR PROMISE THIS IS SAFE :)"
-echo "########################################################################"
+# Usage
+0. Take a complete SysMMC backup and save it on your PC or somewhere safe!
+1. Install DevKitPro as well as all Switch dependencies (see [Atmosphère docs](https://github.com/Atmosphere-NX/Atmosphere/blob/master/docs/building.md)) into your favorite Linux distro (or WSL)
+2. Download the injector into any folder on your machine
+```bash
+#Example, this can be placed anywhere
+mkdir -p ~/Documents/Projects/prodinfo-injector
+git clone https://github.com/Hana2736/ProdinfoInjector.git ~/Documents/Projects/prodinfo-injector
+```
+3. Place your decrypted `PRODINFO` file next to the `injector.sh` file, and rename it to `prod.info`
+4. Run `./injector.sh`
+5. Copy the output SD card files onto your SD card
+6. Use [TegraExplorer](https://github.com/suchmememanyskill/TegraExplorer/releases) to fully wipe SysMMC. This is not optional!
+7. Boot the console into Atmosphère.
+
