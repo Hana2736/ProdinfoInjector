@@ -121,7 +121,7 @@ search='export SETTINGS    = $(ATMOSPHERE_SETTINGS) $(ATMOSPHERE_OPTIMIZATION_FL
 replace='export SETTINGS    = $(ATMOSPHERE_SETTINGS) $(ATMOSPHERE_OPTIMIZATION_FLAG) -Wextra -Wno-missing-field-initializers'
 file='./Data/Atmosphere/libraries/config/templates/stratosphere.mk'
 if !($(md5sum "$file" | grep -q "32c54e507360825865dcd497c83d450a")); then
-    echo "$file was modified in Atmosphere!"
+    echo "$file was updated and is no longer compatible! Create a GitHub issue or contact hana2736 on Discord."
     exit 1
 fi
 replace_text "$search" "$replace" "$file"
@@ -129,8 +129,8 @@ echo "Patching ams::fuse device ID"
 search='        return (y_coord <<  0) |'
 replace='        return (((y_coord <<  0) |'
 file='./Data/Atmosphere/libraries/libexosphere/source/fuse/fuse_api.cpp'
-if !($(md5sum "$file" | grep -q "770a07751fa2382d653d91c596c7f4e9")); then
-    echo "$file was modified in Atmosphere!"
+if !($(md5sum "$file" | grep -q "f0bd527962fd14e83c7b004d68dd8605")); then
+    echo "$file was updated and is no longer compatible! Create a GitHub issue or contact hana2736 on Discord."
     exit 1
 fi
 replace_text "$search" "$replace" "$file"
@@ -142,7 +142,7 @@ search='        u64 device_id;'
 replace="        u64 device_id = $deviceID"
 file='./Data/Atmosphere/libraries/libstratosphere/source/ams/ams_exosphere_api.cpp'
 if !($(md5sum "$file" | grep -q "88cb8c0ea16e04c09472576473f26670")); then
-    echo "$file was modified in Atmosphere!"
+    echo "$file was updated and is no longer compatible! Create a GitHub issue or contact hana2736 on Discord."
     exit 1
 fi
 replace_text "$search" "$replace" "$file"
@@ -157,7 +157,7 @@ search='            info.header.body_size   = sizeof(info.body);'
 replace="            info.header.body_size   = sizeof(info.body); unsigned char* prodInfoPtr = reinterpret_cast<unsigned char*>(&info); unsigned char* prodInfoWritePtr = prodInfoPtr;\n#include <$generatedPath>"
 file='./Data/Atmosphere/stratosphere/ams_mitm/source/amsmitm_prodinfo_utils.cpp'
 if !($(md5sum "$file" | grep -q "adf4645f99f8e9a5b259d30f6b596f89")); then
-    echo "$file was modified in Atmosphere!"
+    echo "$file was updated and is no longer compatible! Create a GitHub issue or contact hana2736 on Discord."
     exit 1
 fi
 replace_text "$search" "$replace" "$file"
